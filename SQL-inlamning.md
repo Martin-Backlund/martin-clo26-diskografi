@@ -1,8 +1,8 @@
 # SQL-inlämning — Diskografi
 
-**Namn:** [Martin]  
-**Artist:** [Beatles]  
-**Datum:** 2026/10/13
+**Namn:** Martin  
+**Artist:** Beatles  
+**Datum:** 2026/10/13   
 
 ---
 
@@ -197,14 +197,15 @@ SELECT song.titel,album.titel FROM album
 JOIN song ON album.id = album_id
 WHERE song.langd > 240;
 
+```
 ## VG förklaringar:
 
---- Tabellstruktur
+## Tabellstruktur
 Jag har valt 5 tabeller: album,artist,member,song,song_writer. Artist innehåller bandet (beatles i detta fall), album innehåller deras skivor, song vissa av låtarna på skivorna, member bandmedlemmarna och song_writer kopplar ihop vilka medlemmar som skrivit vilka låtar. 
 
 Varje tabell har ett `id` som PrimaryKey, så att varje rad är unik. Tabellerna kopplas ihop med ForeignKeys:
 
-album.album_id pekar på artist.id - ett album hör till en artist
+album.artist_id pekar på artist.id - ett album hör till en artist
 song.album_id pekar på album.id - en låt ligger på ett album
 member.artist_id pekar på artist.id - en medlem hör till en artist
 
@@ -213,5 +214,5 @@ inte kan läggas in två gånger.
 
 Databasen blir i 3NF då varje upgift bara finns på ett ställe. Til exempel finns albumets titel i album istället för i varje låt.
 
---Join
-En JOIN används för att hämta data från två tabeller samtidigt genom att koppla ihop raderna med hjälp av Keys.
+## Join
+En JOIN används för att hämta data från två tabeller samtidigt genom att koppla ihop raderna med hjälp av Keys. Till exempel JOIN song ON song.album_id = album.id matchar varje låt med det album som har samma id som låtens album.
